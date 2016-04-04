@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-es6-promise",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Babel plugin that rewrites Promise references to es6-promise, but only if necessary",
   "main": "index.js",
   "files": [
