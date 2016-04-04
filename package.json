@@ -1,0 +1,79 @@
+{
+  "name": "babel-plugin-es6-promise",
+  "version": "0.0.0",
+  "description": "Babel plugin that rewrites Promise references to es6-promise, but only if necessary",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "index.js.map"
+  ],
+  "scripts": {
+    "clean": "rimraf index.js index.js.map",
+    "prebuild": "npm run clean",
+    "build": "babel src --out-dir ./ --source-maps",
+    "build:watch": "npm run build -- --watch",
+    "prepublish": "npm run build",
+    "lint": "as-i-preach",
+    "test": "ava",
+    "test:watch": "ava --verbose --watch",
+    "posttest": "npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/novemberborn/babel-plugin-es6-promise.git"
+  },
+  "keywords": [
+    "babel-plugin",
+    "promise",
+    "polyfill"
+  ],
+  "author": "Mark Wubben (https://novemberborn.net/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/novemberborn/babel-plugin-es6-promise/issues"
+  },
+  "homepage": "https://github.com/novemberborn/babel-plugin-es6-promise#readme",
+  "dependencies": {
+    "babel-template": "^6.7.0",
+    "babel-types": "^6.7.2"
+  },
+  "devDependencies": {
+    "@novemberborn/as-i-preach": "^2.0.0",
+    "ava": "^0.13.0",
+    "babel-cli": "^6.6.5",
+    "babel-core": "^6.7.4",
+    "babel-plugin-add-module-exports": "^0.1.2",
+    "babel-plugin-transform-es2015-block-scoping": "^6.7.1",
+    "babel-plugin-transform-es2015-destructuring": "^6.6.5",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.7.4",
+    "babel-plugin-transform-es2015-shorthand-properties": "^6.5.0",
+    "babel-plugin-transform-es2015-template-literals": "^6.6.5",
+    "babel-plugin-transform-strict-mode": "^6.6.5",
+    "nyc": "^6.1.1",
+    "rimraf": "^2.5.2"
+  },
+  "ava": {
+    "source": [
+      "index.js"
+    ]
+  },
+  "babel": {
+    "plugins": [
+      "transform-es2015-block-scoping",
+      "transform-es2015-destructuring",
+      "transform-es2015-modules-commonjs",
+      "transform-es2015-shorthand-properties",
+      "transform-es2015-template-literals",
+      "transform-strict-mode",
+      "add-module-exports"
+    ]
+  },
+  "nyc": {
+    "cache": true,
+    "reporter": [
+      "html",
+      "lcov",
+      "text"
+    ]
+  }
+}
