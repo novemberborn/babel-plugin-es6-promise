@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@novemberborn/as-i-preach": "^2.0.0",
-    "ava": "^0.14.0",
+    "ava": "^0.15.0",
     "babel-cli": "^6.6.5",
     "babel-core": "^6.7.4",
     "babel-plugin-add-module-exports": "^0.2.0",
