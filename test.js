@@ -43,7 +43,7 @@ test('does not modify member expressions', t => {
 })
 
 test('does not modify Promise variables', t => {
-  const code = 'var Promise = 1;'
+  const code = 'var Promise = function () {};new Promise();'
   t.true(transform(code) === code)
 })
 
