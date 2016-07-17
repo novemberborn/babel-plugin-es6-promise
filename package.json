@@ -4,7 +4,8 @@
   "description": "Babel plugin that rewrites Promise references to es6-promise, but only if necessary",
   "main": "dist/index.js",
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "scripts": {
     "clean": "rimraf dist",
