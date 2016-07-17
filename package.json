@@ -2,19 +2,19 @@
   "name": "babel-plugin-es6-promise",
   "version": "1.0.0",
   "description": "Babel plugin that rewrites Promise references to es6-promise, but only if necessary",
-  "main": "index.js",
+  "main": "dist/index.js",
   "files": [
-    "index.js",
-    "index.js.map"
+    "dist"
   ],
   "scripts": {
-    "clean": "rimraf index.js index.js.map",
+    "clean": "rimraf dist",
     "prebuild": "npm run clean",
-    "build": "babel src --out-dir ./ --source-maps",
+    "build": "babel src --out-dir dist --source-maps",
     "prepublish": "npm run build",
     "lint": "as-i-preach",
     "test": "ava",
     "posttest": "npm run lint",
+    "coverage": "nyc npm test",
     "watch:build": "npm run build -- --watch",
     "watch:test": "ava --verbose --watch"
   },
@@ -54,7 +54,7 @@
   },
   "ava": {
     "source": [
-      "index.js"
+      "dist"
     ]
   },
   "babel": {
