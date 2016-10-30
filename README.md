@@ -39,4 +39,4 @@ it difficult to do further import transforms.
 Also note that the `_Promise` variable name in this example is determined by
 Babel and may differ depending on your code.
 
-[`es6-promise`]: (https://github.com/stefanpenner/es6-promise)
+[`es6-promise`]: https://github.com/stefanpenner/es6-promise
