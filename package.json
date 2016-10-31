@@ -39,7 +39,7 @@
     "babel-types": "^6.7.2"
   },
   "devDependencies": {
-    "@novemberborn/as-i-preach": "^5.0.0",
+    "@novemberborn/as-i-preach": "^6.0.0",
     "ava": "^0.16.0",
     "babel-cli": "^6.6.5",
     "babel-core": "^6.7.4",
@@ -79,5 +79,6 @@
       "text"
     ],
     "sourceMap": false
-  }
+  },
+  "standard-engine": "@novemberborn/as-i-preach"
 }

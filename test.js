@@ -15,13 +15,13 @@ function transform (code) {
   }).code
 }
 
-function run (Promise, es6Promise) {
-  const exports = {}
+function run (explicitPromise, es6Promise) {
+  const fauxExports = {}
   runInNewContext(
     transform('"use strict";exports.Promise = Promise'),
     {
-      exports,
-      Promise,
+      exports: fauxExports,
+      Promise: explicitPromise,
       require (mid) {
         assert(mid === 'es6-promise')
         return es6Promise
@@ -29,7 +29,7 @@ function run (Promise, es6Promise) {
     },
     { filename: 'source.js' }
   )
-  return exports.Promise
+  return fauxExports.Promise
 }
 
 test('does not modify programs that do not reference Promise', t => {
