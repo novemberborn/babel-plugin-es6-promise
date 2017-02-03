@@ -9,9 +9,8 @@ const buildPolyfill = template(`
 
 const replaceIdentifier = {
   ReferencedIdentifier (path) {
-    const { node, parent, scope } = path
+    const { node, scope } = path
 
-    if (t.isMemberExpression(parent)) return
     if (node.name !== 'Promise') return
     if (scope.getBindingIdentifier(node.name)) return
 

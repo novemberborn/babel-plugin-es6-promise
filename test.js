@@ -18,7 +18,15 @@ function transform (code) {
 function run (explicitPromise, es6Promise) {
   const fauxExports = {}
   runInNewContext(
-    transform('"use strict";exports.Promise = Promise'),
+    transform(`
+'use strict'
+
+exports.instances = [
+  Promise.resolve(),
+  new Promise(() => {})
+]
+exports.constructor = Promise
+`),
     {
       exports: fauxExports,
       Promise: explicitPromise,
@@ -29,7 +37,7 @@ function run (explicitPromise, es6Promise) {
     },
     { filename: 'source.js' }
   )
-  return fauxExports.Promise
+  return fauxExports
 }
 
 test('does not modify programs that do not reference Promise', t => {
@@ -48,10 +56,20 @@ test('does not modify Promise variables', t => {
 })
 
 test('does not polyfill Promise unless necessary', t => {
-  t.true(run(Promise) === Promise)
+  const result = run(Promise)
+  t.true(result.instances[0] instanceof Promise)
+  t.true(result.instances[1] instanceof Promise)
+  t.true(result.constructor === Promise)
 })
 
 test('polyfills Promise when necessary', t => {
-  class Faux {}
-  t.true(run(undefined, { Promise: Faux }) === Faux)
+  class Faux {
+    static resolve () {
+      return new Faux()
+    }
+  }
+  const result = run(undefined, { Promise: Faux })
+  t.true(result.instances[0] instanceof Faux)
+  t.true(result.instances[1] instanceof Faux)
+  t.true(result.constructor === Faux)
 })
