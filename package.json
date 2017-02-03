@@ -73,6 +73,12 @@
       "add-module-exports"
     ]
   },
+  "greenkeeper": {
+    "ignore": [
+      "@novemberborn/as-i-preach",
+      "ava"
+    ]
+  },
   "nyc": {
     "cache": true,
     "instrument": false,
