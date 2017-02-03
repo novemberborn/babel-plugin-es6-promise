@@ -23,7 +23,7 @@ function run (explicitPromise, es6Promise) {
 
 exports.instances = [
   Promise.resolve(),
-  new Promise(() => {})
+  new Promise(function () {})
 ]
 exports.constructor = Promise
 `),
